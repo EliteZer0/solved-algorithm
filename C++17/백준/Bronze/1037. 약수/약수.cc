@@ -19,18 +19,7 @@ int main()
 
 	sort(factors, factors + n);
 
-	if (n % 2 == 0)
-	{
-		int a = factors[n / 2];
-		int b = factors[n / 2 - 1];
+	cout << factors[0] * factors[n - 1];
 
-		cout << a * b;
-	}
-	else
-	{
-		int a = factors[n / 2];
-
-		cout << a * a;
-	}
 	return 0;
 }
