@@ -11,7 +11,6 @@ struct town {
 
 int parent[100001];
 int set_size[100001];
-town street_list[1000000];
 
 int find(int x){
     if(parent[x] == x) return x;
@@ -50,6 +49,8 @@ int main() {
         set_size[i] = 1;
     }
 
+    vector<town> street_list(m);
+
     for(int i = 0; i<m; i++){
         int a, b, c;
         cin >> a >> b >> c;
@@ -57,7 +58,7 @@ int main() {
         street_list[i] = {a, b, c};
     }
 
-    sort(street_list, street_list + m);
+    sort(street_list.begin(), street_list.end());
 
     int cnt = 0;
     int min_cost = 0;
