@@ -4,19 +4,14 @@ using namespace std;
 struct town {
     int s, e, cost;
 
-    town(int a, int b, int c){
-        s = a;
-        e = b;
-        cost = c;
-    }
-
     bool operator<(const town& t)const {
-        return t.cost < cost;
+        return t.cost > cost;
     }
 };
 
 int parent[100001];
 int set_size[100001];
+town street_list[1000000];
 
 int find(int x){
     if(parent[x] == x) return x;
@@ -27,7 +22,7 @@ bool unite(int a, int b){
     a = find(a);
     b = find(b);
 
-    if(a == b) return true;
+    if(a == b) return false;
 
     if(set_size[a] < set_size[b]){
         parent[a] = b;
@@ -38,7 +33,7 @@ bool unite(int a, int b){
         set_size[a] += set_size[b];
     }
 
-    return false;
+    return true;
 }
 
 int main() {
@@ -55,33 +50,31 @@ int main() {
         set_size[i] = 1;
     }
 
-    priority_queue<town> pq;
-
     for(int i = 0; i<m; i++){
         int a, b, c;
         cin >> a >> b >> c;
         
-        pq.push(town(a, b, c));
+        street_list[i] = {a, b, c};
     }
+
+    sort(street_list, street_list + m);
 
     int cnt = 0;
     int min_cost = 0;
+    int idx = 0;
 
     // 마지막에 연결될 마을만 분리될 한쪽 마을에 넣어버리면 최솟값
     // 따라서 간선 개수를 n-1이 아니라 n-2라고 생각하면 됨
-    while(cnt != n-2){
-        town cur = pq.top();
-        pq.pop();
+    while(cnt < n-2){
+        town cur = street_list[idx++];
 
-        if(cur.s == cur.e)
+        if(idx == m) break;
+        
+        if(!unite(cur.s, cur.e))
             continue;
         else{
-            if(unite(cur.s, cur.e))
-                continue;
-            else{
-                cnt ++;
-                min_cost += cur.cost;
-            }
+            cnt ++;
+            min_cost += cur.cost;
         }
     }
     
