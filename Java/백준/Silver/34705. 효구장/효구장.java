@@ -4,7 +4,6 @@ import java.io.*;
 
 class Main {
     static int[] meatWeight;
-    static boolean[] visited;
     static int sum, min, max;
     
     public static void main(String[] args) throws Exception {
@@ -16,7 +15,6 @@ class Main {
 
         while(t-- > 0){
             meatWeight = new int[5];
-            visited = new boolean[5];
             sum = 0;
             
             st = new StringTokenizer(br.readLine());
@@ -28,7 +26,7 @@ class Main {
                 meatWeight[i] = Integer.parseInt(st.nextToken());
             }
 
-            if(canEnter(0))
+            if(canEnter(0, 0))
                 sb.append("YES");
             else
                 sb.append("NO");
@@ -38,21 +36,21 @@ class Main {
         System.out.print(sb.toString());
     }
 
-    static boolean canEnter(int depth){
+    static boolean canEnter(int depth, int idx){
+        if(sum > max)
+            return false;
+        
         if(sum >= min && sum <= max)
             return true;
 
-        for(int i = depth; i<5; i++){
-            if(visited[i]) continue;
+        for(int i = idx; i<5; i++){
             if(sum >= max) continue;
-
-            visited[i] = true;
+            
             sum += meatWeight[i];
 
-            if(canEnter(depth+1))
+            if(canEnter(depth + 1, i + 1))
                 return true;
 
-            visited[i] = false;
             sum -= meatWeight[i];
         }
 
