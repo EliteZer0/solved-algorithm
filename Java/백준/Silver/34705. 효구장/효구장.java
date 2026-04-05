@@ -42,7 +42,7 @@ class Main {
         if(sum >= min && sum <= max)
             return true;
 
-        for(int i = 0; i<5; i++){
+        for(int i = depth; i<5; i++){
             if(visited[i]) continue;
             if(sum >= max) continue;
 
