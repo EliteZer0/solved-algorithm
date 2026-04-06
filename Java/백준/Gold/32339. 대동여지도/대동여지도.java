@@ -70,12 +70,8 @@ class Main {
         int cnt = 0;
 
         int totalCost = 0;
-        int pedestrianRoadCnt = 0;
-        int pedestrianRoadCost = 0;
-        int horseRoadCnt = 0;
-        int horseRoadCost = 0;
-        int carriageRoadCnt = 0;
-        int carriageRoadCost = 0;
+        int[] roadCnt = new int[3];
+        int[] roadCost = new int[3];
         while(cnt < n-1){
             spot cur = spotList[idx++];
             int s = cur.s;
@@ -88,24 +84,24 @@ class Main {
                 totalCost += cost;
 
                 if(roadType == PEDESTRIAN){
-                    pedestrianRoadCnt ++;
-                    pedestrianRoadCost += cost;
+                    roadCnt[PEDESTRIAN] ++;
+                    roadCost[PEDESTRIAN] += cost;
                 }
                 else if(roadType == HORSE){
-                    horseRoadCnt ++;
-                    horseRoadCost += cost;
+                    roadCnt[HORSE] ++;
+                    roadCost[HORSE] += cost;
                 }
                 else{
-                    carriageRoadCnt ++;
-                    carriageRoadCost += cost;
+                    roadCnt[CARRIAGE] ++;
+                    roadCost[CARRIAGE] += cost;
                 }
             }
         }
 
         sb.append(totalCost).append("\n")
-            .append(pedestrianRoadCnt).append(' ').append(pedestrianRoadCost).append("\n")
-            .append(horseRoadCnt).append(' ').append(horseRoadCost).append("\n")
-            .append(carriageRoadCnt).append(' ').append(carriageRoadCost);
+            .append(roadCnt[PEDESTRIAN]).append(' ').append(roadCost[PEDESTRIAN]).append("\n")
+            .append(roadCnt[HORSE]).append(' ').append(roadCost[HORSE]).append("\n")
+            .append(roadCnt[CARRIAGE]).append(' ').append(roadCost[CARRIAGE]);
         
         System.out.print(sb.toString());
     }
