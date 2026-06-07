@@ -6,6 +6,7 @@ This is an auto push repository for Baekjoon Online Judge created with [Baekjoon
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1470-shuffle-the-array](https://github.com/EliteZer0/solved-algorithm/tree/main/C++/Easy/1470-shuffle-the-array/) | Easy |
 | [1929-concatenation-of-array](https://github.com/EliteZer0/solved-algorithm/tree/main/Java/Easy/1929-concatenation-of-array/) | Easy |
 | [2144-minimum-cost-of-buying-candies-with-discount](https://github.com/EliteZer0/solved-algorithm/tree/main/C++/Easy/2144-minimum-cost-of-buying-candies-with-discount/) | Easy |
 ## Simulation
