@@ -29,5 +29,6 @@ This is an auto push repository for Baekjoon Online Judge created with [Baekjoon
 ## Database
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0584-find-customer-referee](https://github.com/EliteZer0/solved-algorithm/tree/main/MySQL/Easy/0584-find-customer-referee/) | Easy |
 | [1757-recyclable-and-low-fat-products](https://github.com/EliteZer0/solved-algorithm/tree/main/MySQL/Easy/1757-recyclable-and-low-fat-products/) | Easy |
 <!---LeetCode Topics End-->
